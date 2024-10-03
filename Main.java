@@ -2,14 +2,14 @@ public class Main
 {
     public static void main(String[] args)
     {
-        Collection<Pessoa> pessoas = new ArrayList<>();
-
-        Pessoa pessoa = new Pessoa(
-            "Robertin Bosque", Time.now()
-        );
-        pessoas.add(pessoa);
-
-        System.out.println(pessoa.getNome());
+        List list = new List();
+        
+        list.add(10);
+        list.add(20);
+        list.add(30);
+        list.add(40);
+        System.out.println(list.getList());
+        System.out.println(list.exist(20));
 
     }
 }
