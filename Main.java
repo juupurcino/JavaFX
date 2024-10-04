@@ -30,7 +30,5 @@ public class Main
         // list.intersection(list1, list2);
         // System.out.println(list.getListIntersection());
 
-
-
     }
 }

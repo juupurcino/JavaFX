@@ -6,5 +6,6 @@ public interface Set {
     void add(int value);
     ArrayList<Integer> unity(List list1, List list2);
     ArrayList<Integer> intersection(List list1, List list2);
+    ArrayList<Integer> difference(List list1, List list2);
 
 }
