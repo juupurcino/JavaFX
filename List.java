@@ -2,32 +2,89 @@ import java.util.ArrayList;
 
 public class List implements Set{
 
-    private ArrayList<Integer> list;
+    private ArrayList<Integer> listExist;
+    private ArrayList<Integer> listUnity;
+    private ArrayList<Integer> listIntersection;
+    
+    
     
     public List() {
-        this.list =  new ArrayList<>();
+        this.listExist =  new ArrayList<>();
+        this.listUnity = new ArrayList<>();
+        this.listIntersection = new ArrayList<>();
     }
     
     @Override
     public void add(int value) {
-    
-        list.add(value);
+        
+        listExist.add(value);
     }
     
     @Override
     public boolean exist(int value) {
         
-        return list.contains(value);
+        return listExist.contains(value);
     }
+    
+    @Override
+    public ArrayList<Integer> unity(List list1, List list2) {
+        
+        for (int i = 0; i < list1.getList().size(); i++) {
+            int element = list1.getList().get(i);
+            listUnity.add(element);
+        }
+        
+        for (int i = 0; i < list2.getList().size(); i++) {
+            int element = list2.getList().get(i);
+            
+            if (!list1.exist(element)) {
+                
+                listUnity.add(element);
+            }
+        }
+        
+        return listUnity;
+    }
+    
+    @Override
+    public ArrayList<Integer> intersection(List list1, List list2) {
+        
+        for (int i = 0; i < list1.getList().size(); i++) {
+            int element = list1.getList().get(i);
+            
+            if (list2.exist(element)) {
+                
+                listIntersection.add(element);
+            }
+        }
+
+        return listIntersection;
+    }
+    
     
     public ArrayList<Integer> getList() {
-        return list;
-    }
-
-    public void setList(ArrayList<Integer> list) {
-        this.list = list;
+        return listExist;
     }
     
+    public void setList(ArrayList<Integer> list) {
+        this.listExist = list;
+    }
+    
+    public ArrayList<Integer> getListUnity() {
+        return listUnity;
+    }
+    
+    public void setListUnity(ArrayList<Integer> listUnity) {
+        this.listUnity = listUnity;
+    }
+    
+    public ArrayList<Integer> getListIntersection() {
+        return listIntersection;
+    }
+    
+    public void setListIntersection(ArrayList<Integer> listIntersection) {
+        this.listIntersection = listIntersection;
+    }
 }
 
 
