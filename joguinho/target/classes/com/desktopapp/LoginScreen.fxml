@@ -2,11 +2,10 @@
 
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="Label" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#decrementar" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.desktopapp.MainController">
+<AnchorPane id="area" fx:id="area" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#decrementar" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.desktopapp.MainController">
    <children>
       <Label layoutX="469.0" layoutY="31.0" text="Pontos:">
          <font>
@@ -18,7 +17,16 @@
             <Font size="18.0" />
          </font>
       </Label>
-      <Pane fx:id="area" prefHeight="400.0" prefWidth="600.0" />
-      <Circle id="elemento" fx:id="elemento" fill="DODGERBLUE" layoutX="554.0" layoutY="84.0" onMouseClicked="#mudarPosicao" radius="26.0" stroke="BLACK" strokeType="INSIDE" />
+      <Label layoutX="469.0" layoutY="58.0" text="Erros:">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label id="pontos" fx:id="erros" layoutX="544.0" layoutY="58.0" text="0">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Circle id="elemento" fx:id="elemento" fill="DODGERBLUE" layoutX="261.0" layoutY="226.0" onMouseClicked="#mudarPosicao" radius="26.0" stroke="BLACK" strokeType="INSIDE" />
    </children>
 </AnchorPane>
