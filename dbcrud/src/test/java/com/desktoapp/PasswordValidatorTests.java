@@ -1,5 +1,3 @@
-package com.desktoapp;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.api.Test;
 
@@ -19,8 +17,8 @@ public class PasswordValidatorTests {
     void validateBigPasswords() {
         assertEquals(MyPasswordValidator.Validate("minhasenha123"), true);
         assertEquals(MyPasswordValidator.Validate("1234567890123"), true);
-        assertEquals(MyPasswordValidator.Validate("minhasenhagig"), true);
-        assertEquals(MyPasswordValidator.Validate("senhaji 👻"), true);
+        assertEquals(MyPasswordValidator.Validate("minhasenhagigantesca"), true);
+        assertEquals(MyPasswordValidator.Validate("senhaemoji 👻"), true);
     }
 
     @Test
