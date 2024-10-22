@@ -2,10 +2,14 @@ package com.desktopapp;
 
 import java.util.List;
 
+import com.desktopapp.model.Produto;
+
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
 import jakarta.persistence.TypedQuery;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 public class Context {
     private EntityManagerFactory emf;
@@ -13,6 +17,17 @@ public class Context {
 
     public Context() {
         emf = Persistence.createEntityManagerFactory("my-persistence-unit");
+    }
+
+    public ObservableList<Produto> listaproduto(){
+        
+        ObservableList<Produto> produtos = FXCollections.observableArrayList();
+        em = emf.createEntityManager();
+
+        TypedQuery<Produto> query = em.createQuery("SELECT u FROM Produto u", Produto.class);
+        produtos.addAll(query.getResultList());
+
+        return produtos;
     }
 
     public void begin() {

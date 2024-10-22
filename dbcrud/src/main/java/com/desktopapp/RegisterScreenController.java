@@ -38,7 +38,7 @@ public class RegisterScreenController {
     protected PasswordField passwordCreate;
 
     @FXML
-    protected void submit(ActionEvent e) throws Exception {
+    protected void register(ActionEvent e) throws Exception {
         
         Context ctx = new Context();
 
@@ -60,7 +60,6 @@ public class RegisterScreenController {
         user.setName(nameCreate.getText());
         user.setPassword(passwordCreate.getText());
 
-        Context ctx = new Context();
         ctx.begin();
         ctx.save(user);
         ctx.commit();
@@ -69,7 +68,7 @@ public class RegisterScreenController {
                 .getScene().getWindow();
         crrStage.close();
         var stage = new Stage();
-        var scene = RegisterScreenController.CreateScene();
+        var scene = LoginScreenController.CreateScene();
         stage.setScene(scene);
         stage.show();
 

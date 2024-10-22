@@ -67,7 +67,7 @@ public class LoginScreenController {
                 .getScene().getWindow();
         crrStage.close();
         var stage = new Stage();
-        var scene = LoginScreenController.CreateScene();
+        var scene = VizuProdutoScreenController.CreateScene();
         stage.setScene(scene);
         stage.show();
 
