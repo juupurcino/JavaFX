@@ -112,4 +112,45 @@ public class Context {
             em = null;
         }
     }
+
+    public void updtade(Object object) {
+        
+        em = emf.createEntityManager();
+
+        try {
+            em.getTransaction().begin();
+            em.merge(object);
+            em.getTransaction().commit();
+        } catch (Exception e) {
+            if (em.getTransaction().isActive()) {
+                em.getTransaction().rollback();
+            }
+            e.printStackTrace();
+        } finally{
+
+            em.close();
+            em = null;
+        }
+    }
+
+    public void delete(Object object) {
+        
+        em = emf.createEntityManager();
+        
+        try {
+            em.getTransaction().begin();
+            object = em.contains(object) ? object : em.merge(object);
+            em.remove(object);
+            em.getTransaction().commit();
+        } catch (Exception e) {
+            if (em.getTransaction().isActive()) {
+                em.getTransaction().rollback();
+            }
+            e.printStackTrace();
+        }finally{
+
+            em.close();
+            em = null;
+        }
+    }
 }
