@@ -74,9 +74,9 @@
             <Button fx:id="register" layoutX="512.0" layoutY="34.0" mnemonicParsing="false" onAction="#goToCadastrarProdutos" text="Cadastrar produto" />
             <Label layoutX="20.0" layoutY="79.0" text="ID:" />
             <TextField fx:id="pesquisa" layoutX="44.0" layoutY="75.0" />
-            <Button fx:id="buttonPesquisa" layoutX="211.0" layoutY="75.0" mnemonicParsing="false" text="Pesquisar" />
-            <Button layoutX="512.0" layoutY="75.0" mnemonicParsing="false" onAction="#buttonExcluir" text="Excluir" />
-            <Button layoutX="578.0" layoutY="75.0" mnemonicParsing="false" onAction="#buttonEditar" text="Editar" />
+            <Button fx:id="buttonPesquisa" layoutX="211.0" layoutY="75.0" mnemonicParsing="false" onAction="#pesquisa" text="Pesquisar" />
+            <Button fx:id="buttonExcluir" layoutX="512.0" layoutY="75.0" mnemonicParsing="false" onAction="#buttonExcluir" text="Excluir" />
+            <Button fx:id="buttonEditar" layoutX="578.0" layoutY="75.0" mnemonicParsing="false" onAction="#buttonEditar" text="Editar" />
       </children>
     </AnchorPane>
   </children>

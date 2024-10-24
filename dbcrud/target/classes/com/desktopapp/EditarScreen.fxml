@@ -6,12 +6,12 @@
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.SeparatorMenuItem?>
-<?import javafx.scene.control.TextField?> 
-<?import javafx.scene.control.PasswordField?> 
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<VBox prefHeight="286.0" prefWidth="410.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.desktopapp.RegisterScreenController">
+<VBox prefHeight="283.0" prefWidth="425.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1">
   <children>
     <MenuBar VBox.vgrow="NEVER">
       <menus>
@@ -52,13 +52,21 @@
         </Menu>
       </menus>
     </MenuBar>
-    <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="346.0" prefWidth="410.0" VBox.vgrow="ALWAYS">
+    <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="375.0" prefWidth="507.0" VBox.vgrow="ALWAYS">
       <children>
-            <Label layoutX="35.0" layoutY="43.0" text="Nome" />
-            <TextField fx:id="nameCreate" layoutX="35.0" layoutY="70.0" prefHeight="25.0" prefWidth="343.0" />
-            <Label layoutX="35.0" layoutY="114.0" text="Senha" />
-            <PasswordField fx:id="passwordCreate" layoutX="34.0" layoutY="138.0" prefHeight="25.0" prefWidth="343.0" />
-            <Button fx:id="registerCreate" layoutX="141.0" layoutY="193.0" onAction="#" prefHeight="25.0" prefWidth="131.0" text="Registrar" />
+            <Label layoutX="190.0" layoutY="27.0" text="Editar">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <TextField layoutX="108.0" layoutY="163.0" prefHeight="25.0" prefWidth="231.0" />
+            <Button layoutX="196.0" layoutY="210.0" mnemonicParsing="false" text="EDITAR" />
+            <TextField layoutX="108.0" layoutY="117.0" prefHeight="25.0" prefWidth="231.0" />
+            <Label layoutX="58.0" layoutY="121.0" text="Nome" />
+            <Label layoutX="62.0" layoutY="167.0" text="Tipo" />
+            <Label layoutX="69.0" layoutY="77.0" text="ID" />
+            <TextField layoutX="108.0" layoutY="73.0" prefHeight="25.0" prefWidth="138.0" />
+            <Button layoutX="268.0" layoutY="73.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="70.0" text="Pesquisar" />
       </children>
     </AnchorPane>
   </children>
