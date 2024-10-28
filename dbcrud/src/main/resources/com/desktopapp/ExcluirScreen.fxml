@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox prefHeight="283.0" prefWidth="425.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1">
+<VBox prefHeight="283.0" prefWidth="425.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.desktopapp.ExcluirProdutoScreenController">
   <children>
     <MenuBar VBox.vgrow="NEVER">
       <menus>
@@ -59,8 +59,9 @@
                   <Font size="18.0" />
                </font>
             </Label>
-            <TextField layoutX="138.0" layoutY="131.0" />
-            <Button layoutX="182.0" layoutY="188.0" mnemonicParsing="false" text="EXCLUIR" />
+            <TextField fx:id="idExcluir" layoutX="138.0" layoutY="131.0" />
+            <Button layoutX="182.0" layoutY="188.0" mnemonicParsing="false" text="EXCLUIR" onAction="#excluir"/>
+            <Label fx:id="statusLabel" />
       </children>
     </AnchorPane>
   </children>

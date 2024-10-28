@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox prefHeight="283.0" prefWidth="425.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1">
+<VBox prefHeight="401.0" prefWidth="425.0" xmlns="http://javafx.com/javafx/8.0.411" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.desktopapp.EditarProdutoScreenController">
   <children>
     <MenuBar VBox.vgrow="NEVER">
       <menus>
@@ -52,21 +52,30 @@
         </Menu>
       </menus>
     </MenuBar>
-    <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="375.0" prefWidth="507.0" VBox.vgrow="ALWAYS">
+    <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="330.0" prefWidth="425.0" VBox.vgrow="ALWAYS">
       <children>
             <Label layoutX="190.0" layoutY="27.0" text="Editar">
                <font>
                   <Font size="18.0" />
                </font>
             </Label>
-            <TextField layoutX="108.0" layoutY="163.0" prefHeight="25.0" prefWidth="231.0" />
-            <Button layoutX="196.0" layoutY="210.0" mnemonicParsing="false" text="EDITAR" />
-            <TextField layoutX="108.0" layoutY="117.0" prefHeight="25.0" prefWidth="231.0" />
-            <Label layoutX="58.0" layoutY="121.0" text="Nome" />
-            <Label layoutX="62.0" layoutY="167.0" text="Tipo" />
             <Label layoutX="69.0" layoutY="77.0" text="ID" />
-            <TextField layoutX="108.0" layoutY="73.0" prefHeight="25.0" prefWidth="138.0" />
-            <Button layoutX="268.0" layoutY="73.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="70.0" text="Pesquisar" />
+            <TextField fx:id="idProduto" layoutX="108.0" layoutY="73.0" prefHeight="25.0" prefWidth="138.0" />
+            <Button fx:id="pesquisar" layoutX="268.0" layoutY="73.0" mnemonicParsing="false" onAction="#pesquisar" prefHeight="25.0" prefWidth="70.0" text="Pesquisar" />
+            <Label layoutX="58.0" layoutY="121.0" text="Nome" />
+            <TextField fx:id="nomeEditar" layoutX="108.0" layoutY="117.0" prefHeight="25.0" prefWidth="231.0" />
+            <Label layoutX="62.0" layoutY="167.0" text="Tipo" />
+            <TextField fx:id="tipoEditar" layoutX="108.0" layoutY="163.0" prefHeight="25.0" prefWidth="231.0" />
+            <Button fx:id="editar" layoutX="178.0" layoutY="318.0" mnemonicParsing="false" onAction="#editar" text="EDITAR" />
+            <Button fx:id="voltar" layoutX="23.0" layoutY="12.0" mnemonicParsing="false" onAction="#voltar" prefHeight="25.0" prefWidth="70.0" text="Voltar">
+               <font>
+                  <Font name="Arial" size="15.0" />
+               </font>
+            </Button>
+            <Label layoutX="64.0" layoutY="214.0" text="Qtd" />
+            <Label layoutX="64.0" layoutY="260.0" text="Valor" />
+            <TextField fx:id="qtdEditar" layoutX="108.0" layoutY="209.0" prefHeight="25.0" prefWidth="231.0" />
+            <TextField fx:id="valorEditar" layoutX="108.0" layoutY="255.0" prefHeight="25.0" prefWidth="231.0" />
       </children>
     </AnchorPane>
   </children>

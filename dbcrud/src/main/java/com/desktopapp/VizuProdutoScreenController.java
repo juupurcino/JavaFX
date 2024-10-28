@@ -5,7 +5,7 @@ import java.util.List;
 
 import com.desktopapp.model.Produto;
 
-import jakarta.persistence.TypedQuery;
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -13,15 +13,20 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
+import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
+import javafx.util.converter.FloatStringConverter;
+import javafx.util.converter.IntegerStringConverter;
 
 public class VizuProdutoScreenController {
+
     public static Scene CreateScene() throws Exception {
         URL sceneUrl = VizuProdutoScreenController.class
                 .getResource("VizuProdutoScreen.fxml");
@@ -100,26 +105,20 @@ public class VizuProdutoScreenController {
 
         Context ctx = new Context();
 
+        List<Produto> produtosEncontrados = ctx.find(
+                Produto.class,
+                "SELECT u FROM Produto u WHERE u.name LIKE :arg0 OR u.tipo LIKE :arg1",
+                "%" + pesquisa.getText() + "%",
+                "%" + pesquisa.getText() + "%"
+        );
 
+        ObservableList<Produto> produtosList = FXCollections.observableArrayList(produtosEncontrados);
+        tabela.setItems(produtosList);
 
-        var id = ctx.find(Produto.class, "SELECT u FROM Produto u WHERE u.id = :arg0", pesquisa.getText());
-        var nome = ctx.find(Produto.class, "SELECT u FROM Produto u WHERE u.nome = :arg0", pesquisa.getText());
-        var tipo = ctx.find(Produto.class, "SELECT u FROM Produto u WHERE u.tipo = :arg0", pesquisa.getText());
-
-        
-
-        for (Produto produto : produtosEncontrados) {
-            if (listaprodutos.contains(produto)) {
-                tabela.setItems(listaprodutos);
-                break; 
-            }
-        }
-        
     }
 
     @FXML
     public void initialize() {
-
         Context ctx = new Context();
 
         idCol.setCellValueFactory(new PropertyValueFactory<>("id"));
@@ -127,6 +126,8 @@ public class VizuProdutoScreenController {
         tipoCol.setCellValueFactory(new PropertyValueFactory<>("tipo"));
         qtdCol.setCellValueFactory(new PropertyValueFactory<>("qtd"));
         valorCol.setCellValueFactory(new PropertyValueFactory<>("valor"));
+        qtdCol.setCellFactory(TextFieldTableCell.forTableColumn(new IntegerStringConverter()));
+        valorCol.setCellFactory(TextFieldTableCell.forTableColumn(new FloatStringConverter()));
 
         // Deletar
         deleteCol.setCellFactory(column -> new TableCell<Produto, Void>() {
@@ -143,32 +144,70 @@ public class VizuProdutoScreenController {
             @Override
             protected void updateItem(Void item, boolean empty) {
                 super.updateItem(item, empty);
-                if (empty) {
-                    setGraphic(null);
-                } else {
-                    setGraphic(deleteButton);
-                }
+                setGraphic(empty ? null : deleteButton);
             }
         });
 
-        nomeCol.setCellFactory(
-                TextFieldTableCell.forTableColumn());
-        tipoCol.setCellFactory(
-                TextFieldTableCell.forTableColumn());
+        nomeCol.setCellFactory(TextFieldTableCell.forTableColumn());
+        tipoCol.setCellFactory(TextFieldTableCell.forTableColumn());
 
         nomeCol.setOnEditCommit(event -> {
             Produto produto = event.getRowValue();
             produto.setName(event.getNewValue());
             ctx.updtade(produto);
-
         });
 
         tipoCol.setOnEditCommit(event -> {
             Produto produto = event.getRowValue();
             produto.settipo(event.getNewValue());
             ctx.updtade(produto);
-
         });
 
+        qtdCol.setCellFactory(column -> new TableCell<Produto, Integer>() {
+            private final Button addButton = new Button("+");
+            private final Button minusButton = new Button("-");
+            private final Label quantidadeLabel = new Label();
+            private final HBox hbox = new HBox(5, minusButton, quantidadeLabel, addButton);
+
+            {
+                addButton.setOnAction(event -> {
+                    Produto produto = getTableView().getItems().get(getIndex());
+                    if (produto != null) {
+                        produto.setQtd(produto.getQtd() + 1); // Incrementa a quantidade
+                        quantidadeLabel.setText(String.valueOf(produto.getQtd())); // Atualiza o label
+                        ctx.updtade(produto); // Atualiza no banco de dados
+                        getTableView().refresh(); // Atualiza a tabela
+                    }
+                });
+
+                minusButton.setOnAction(event -> {
+                    Produto produto = getTableView().getItems().get(getIndex());
+                    if (produto != null && produto.getQtd() > 0) { // Evita quantidade negativa
+                        produto.setQtd(produto.getQtd() - 1); // Decrementa a quantidade
+                        quantidadeLabel.setText(String.valueOf(produto.getQtd())); // Atualiza o label
+                        ctx.updtade(produto); // Atualiza no banco de dados
+                        getTableView().refresh(); // Atualiza a tabela
+                    }
+                });
+            }
+
+            @Override
+            protected void updateItem(Integer item, boolean empty) {
+                super.updateItem(item, empty);
+                if (empty || getTableView() == null) {
+                    setGraphic(null);
+                } else {
+                    Produto produto = getTableView().getItems().get(getIndex());
+                    if (produto != null) {
+                        quantidadeLabel.setText(String.valueOf(produto.getQtd())); // Atualiza a quantidade no label
+                        setGraphic(hbox);
+                    }
+                }
+            }
+        });
+
+        // Adiciona os produtos à tabela
+        tabela.setItems(ctx.listaproduto());
     }
+
 }
