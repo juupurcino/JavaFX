@@ -5,8 +5,10 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Scope;
 
 import com.example.demo.impl.ExampleLoginService;
+import com.example.demo.impl.ExamplePassService;
 import com.example.demo.impl.ExamplePolindromoService;
 import com.example.demo.services.LoginService;
+import com.example.demo.services.PassService;
 import com.example.demo.services.PolindromoService;
 
 @Configuration
@@ -28,6 +30,15 @@ public class DependencyConfiguration {
     // @Scope("session")
     public PolindromoService polindromoService() {
         return new ExamplePolindromoService();
+    }
+
+    @Bean
+    @Scope("singleton")
+    // @Scope("prototype")
+    // @Scope("request")
+    // @Scope("session")
+    public PassService passService() {
+        return new ExamplePassService();
     }
 
 }

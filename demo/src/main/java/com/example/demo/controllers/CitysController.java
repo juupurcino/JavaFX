@@ -1,7 +1,6 @@
 package com.example.demo.controllers;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -21,16 +20,12 @@ public class CitysController {
     @Autowired
     private CityRepository repo;
 
-    @GetMapping("/query/{name}")
-    public ResponseEntity<List<Citys>> getByName(@PathVariable String City) {
-        List<Citys> cities = repo.findByCity(City);
+    @GetMapping("/{search}")
+    public ResponseEntity<List<Citys>> getByCountry(@PathVariable String search) {
+    List<Citys> cities = repo.findByCountry(search);
 
-        if (cities.isEmpty()) {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }
-
-        return new ResponseEntity<>(cities, HttpStatus.OK);
-    }
+    return new ResponseEntity<>(cities, HttpStatus.OK);
+}
 
     // @GetMapping("/find/{name}")
     // public ResponseEntity<List<Citys>> getByName(@PathVariable String name) {

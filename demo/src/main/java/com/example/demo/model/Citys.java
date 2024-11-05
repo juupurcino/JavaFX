@@ -14,13 +14,13 @@ import jakarta.persistence.Id;
         private Long id;
 
         @Column 
-        private String Country;
+        private String country;
         
         @Column 
-        private String State;
+        private String state;
 
         @Column 
-        private String City;
+        private String city;
 
         public Long getId() {
             return id;
@@ -31,27 +31,27 @@ import jakarta.persistence.Id;
         }
 
         public String getCountry() {
-            return Country;
+            return country;
         }
 
         public void setCountry(String country) {
-            Country = country;
+            this.country = country;
         }
 
         public String getState() {
-            return State;
+            return state;
         }
 
         public void setState(String state) {
-            State = state;
+            this.state = state;
         }
 
         public String getCity() {
-            return City;
+            return city;
         }
 
         public void setCity(String city) {
-            City = city;
+            this.city = city;
         }
 
     }
