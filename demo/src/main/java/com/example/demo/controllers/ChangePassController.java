@@ -30,6 +30,16 @@ public class ChangePassController {
             return ResponseEntity.badRequest().body("Usuário não encontrado!");
         }
 
-        return passService.changePassword(data.password(), data.newPassword(), data.repeatPassword(), user.getPassword());
+        String passwordValidationResponse = passService.alterPass(data.password(), data.newPassword(), data.repeatPassword(), user.getPassword());
+
+        if (!passwordValidationResponse.equals("ok")){
+            return ResponseEntity.ok(passwordValidationResponse);
+        }    
+
+        user.setPassword(data.newPassword());
+        passRepository.save(user);
+
+        return ResponseEntity.ok("Senha alterada com sucesso!");
+
     }
 }

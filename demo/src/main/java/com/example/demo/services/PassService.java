@@ -1,7 +1,6 @@
 package com.example.demo.services;
 
-import org.springframework.http.ResponseEntity;
-
 public interface PassService {
-    ResponseEntity<String> verify(String password);
+    String verify(String password);
+    String alterPass(String oldPassword, String newPassword, String repeatPassword, String realPass);
 }
