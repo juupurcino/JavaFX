@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.demo.dto.LoginData;
+import com.example.demo.dto.UserData;
 import com.example.demo.impl.BcryptPasswordEncoderService;
 import com.example.demo.impl.ExamplePassService;
 import com.example.demo.model.User;
@@ -32,7 +32,7 @@ public class CreateController {
     private static final String EMAIL_PATTERN = "^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$";
 
     @PostMapping
-    public ResponseEntity<String> createUser(@RequestBody LoginData data) {
+    public ResponseEntity<String> createUser(@RequestBody UserData data) {
 
         String username = data.username();
         String password = data.password();
