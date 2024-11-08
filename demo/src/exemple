@@ -1,0 +1,14 @@
+Escopo	Descrição	Quando usar
+singleton	Cria uma única instância para toda a aplicação	Serviços sem estado específico por requisição
+prototype	Cria uma nova instância a cada solicitação	Serviços com estado específico por uso
+request	Cria uma nova instância por requisição HTTP	Dados específicos por requisição
+session	Cria uma instância por sessão de usuário	Dados específicos de sessão do usuário
+application	Cria uma instância global para toda a aplicação	Configurações globais da aplicação
+
+200 OK: A requisição foi bem-sucedida. Use quando a operação foi realizada com sucesso.
+201 Created: A requisição foi bem-sucedida e resultou na criação de um recurso. Use quando um novo recurso for criado (como um novo usuário ou produto).
+400 Bad Request: A requisição não pode ser processada devido a um erro do cliente (dados inválidos, por exemplo).
+401 Unauthorized: O usuário não está autenticado. É necessário fazer login para acessar o recurso.
+403 Forbidden: O servidor entendeu a requisição, mas se recusa a autorizá-la. O usuário não tem permissão.
+404 Not Found: O recurso solicitado não foi encontrado.
+500 Internal Server Error: Ocorreu um erro no servidor.
